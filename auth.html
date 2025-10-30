@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AgroCoin - Iniciar Sesión</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#64cf17",
+                        "background-light": "#fafcf8",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light">
+    <!-- Navegación superior -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+            <nav class="flex gap-6">
+                <a href="index.html" class="text-gray-600 hover:text-primary">Inicio</a>
+                <a href="proyectos.html" class="text-gray-600 hover:text-primary">Proyectos</a>
+                <a href="inversor.html" class="text-gray-600 hover:text-primary">Inversores</a>
+                <a href="productor.html" class="text-gray-600 hover:text-primary">Productores</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <!-- Toggle entre Login y Registro -->
+            <div class="text-center">
+                <div class="flex justify-center mb-6">
+                    <button id="loginTab" onclick="showLogin()" class="px-4 py-2 bg-primary text-white rounded-l-lg">Iniciar Sesión</button>
+                    <button id="registerTab" onclick="showRegister()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-r-lg">Registrarse</button>
+                </div>
+                <a href="index.html" class="flex items-center justify-center gap-2 text-2xl font-bold text-primary">
+                    AgroCoin
+                </a>
+                <h2 id="formTitle" class="mt-6 text-3xl font-extrabold text-gray-900">Inicia sesión en tu cuenta</h2>
+            </div>
+
+            <!-- Formulario de Login -->
+            <form id="loginForm" class="mt-8 space-y-6">
+                <div class="space-y-4">
+                    <input type="email" id="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Correo electrónico">
+                    <input type="password" id="password" required class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Contraseña">
+                    <select id="userType" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                        <option value="inversor">Inversor</option>
+                        <option value="productor">Productor</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 bg-primary text-white rounded-md font-medium hover:bg-green-600">
+                    Iniciar Sesión
+                </button>
+                <div class="text-center">
+                    <span class="text-sm text-gray-600">¿Quieres explorar primero? </span>
+                    <a href="proyectos.html" class="text-primary hover:text-green-600">Ver Proyectos</a>
+                </div>
+            </form>
+
+            <!-- Formulario de Registro -->
+            <form id="registerForm" class="mt-8 space-y-6 hidden">
+                <div class="space-y-4">
+                    <input type="text" id="regNombre" required class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Nombre completo">
+                    <input type="email" id="regEmail" required class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Correo electrónico">
+                    <input type="password" id="regPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Contraseña">
+                    <select id="regUserType" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                        <option value="inversor">Inversor</option>
+                        <option value="productor">Productor</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 bg-primary text-white rounded-md font-medium hover:bg-green-600">
+                    Registrarse
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Funciones para alternar entre login y registro
+        function showLogin() {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('registerForm').classList.add('hidden');
+            document.getElementById('formTitle').textContent = 'Inicia sesión en tu cuenta';
+            document.getElementById('loginTab').className = 'px-4 py-2 bg-primary text-white rounded-l-lg';
+            document.getElementById('registerTab').className = 'px-4 py-2 bg-gray-300 text-gray-700 rounded-r-lg';
+        }
+
+        function showRegister() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('registerForm').classList.remove('hidden');
+            document.getElementById('formTitle').textContent = 'Crea tu cuenta';
+            document.getElementById('loginTab').className = 'px-4 py-2 bg-gray-300 text-gray-700 rounded-l-lg';
+            document.getElementById('registerTab').className = 'px-4 py-2 bg-primary text-white rounded-r-lg';
+        }
+
+        // Manejar registro
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('regNombre').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const userType = document.getElementById('regUserType').value;
+            
+            if (nombre && email && password) {
+                localStorage.setItem('userType', userType);
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userName', nombre);
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                if (userType === 'inversor') {
+                    window.location.href = 'inversor.html';
+                } else {
+                    window.location.href = 'productor.html';
+                }
+            } else {
+                alert('Por favor, completa todos los campos');
+            }
+        });
+
+        // Actualizar script de login para agregar estado de sesión
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const userType = document.getElementById('userType').value;
+            
+            if (email && password) {
+                localStorage.setItem('userType', userType);
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                if (userType === 'inversor') {
+                    window.location.href = 'inversor.html';
+                } else {
+                    window.location.href = 'productor.html';
+                }
+            } else {
+                alert('Por favor, completa todos los campos');
+            }
+        });
+    </script>
+</body>
+</html>

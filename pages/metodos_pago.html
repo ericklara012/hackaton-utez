@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCoin - Métodos de Pago</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="font-[Manrope] bg-gray-50">
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+
+                <nav class="hidden md:flex gap-6 items-center">
+                    <a href="../dashboards/dashboard-inversor.html" class="nav-link text-gray-600 hover:text-primary">Dashboard</a>
+                    <a href="proyectos.html" class="nav-link text-gray-600 hover:text-primary">Proyectos</a>
+                    <a href="portafolio.html" class="nav-link text-gray-600 hover:text-primary">Portafolio</a>
+                    <a href="mercados.html" class="nav-link text-gray-600 hover:text-primary">Mercados</a>
+                    <a href="metodos_pago.html" class="nav-link text-primary font-medium">Pagos</a>
+                    <span id="userWelcome" class="text-gray-700 font-medium"></span>
+                    <button onclick="logout()" class="text-red-600 hover:text-red-800 font-medium">Cerrar Sesión</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Métodos de Pago</h1>
+            <p class="text-gray-600">Gestiona tus métodos de pago y retiros de forma segura</p>
+        </div>
+
+        <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-lg text-white p-6 mb-8">
+            <div class="flex justify-between items-center">
+                <div>
+                    <p class="text-green-100 text-sm">Saldo disponible</p>
+                    <p class="text-3xl font-bold">$4,250.80</p>
+                    <p class="text-green-100 text-sm mt-1">Última actualización: Hoy 14:32</p>
+                </div>
+                <div class="text-right">
+                    <button class="bg-white text-green-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 mr-2">
+                        Retirar Fondos
+                    </button>
+                    <button class="bg-green-700 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-800">
+                        Depositar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900">Métodos de Pago</h3>
+                        <button id="addPaymentMethod" class="btn-primary text-sm">Agregar Método</button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">VISA</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900">**** **** **** 4242</p>
+                                        <p class="text-sm text-gray-500">Vence 12/26</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                        Principal
+                                    </span>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-8 bg-gray-600 rounded flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900">Banco Nacional - ****7891</p>
+                                        <p class="text-sm text-gray-500">Cuenta corriente</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-8 bg-blue-600 rounded flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">PP</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900">usuario@email.com</p>
+                                        <p class="text-sm text-gray-500">PayPal</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Acciones Rápidas</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button class="p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors text-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-900">Depositar</p>
+                            <p class="text-sm text-gray-500">Agregar fondos</p>
+                        </button>
+
+                        <button class="p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors text-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-900">Retirar</p>
+                            <p class="text-sm text-gray-500">Sacar fondos</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-semibold text-gray-900">Historial de Transacciones</h3>
+                    <select class="border border-gray-300 rounded-md px-3 py-1 text-sm">
+                        <option>Últimos 30 días</option>
+                        <option>Últimos 90 días</option>
+                        <option>Este año</option>
+                        <option>Todo el historial</option>
+                    </select>
+                </div>
+
+                <div class="space-y-4 max-h-96 overflow-y-auto">
+                    <div class="flex items-center justify-between p-3 border border-gray-100 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900">Inversión en Cultivos Orgánicos</p>
+                                <p class="text-sm text-gray-500">Hoy 10:30 AM</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-red-600">-$2,500</p>
+                            <p class="text-xs text-gray-500">VISA ****4242</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 border border-gray-100 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900">Retorno de inversión</p>
+                                <p class="text-sm text-gray-500">Ayer 3:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-green-600">+$425</p>
+                            <p class="text-xs text-gray-500">Banco ****7891</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 border border-gray-100 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900">Depósito inicial</p>
+                                <p class="text-sm text-gray-500">15 Nov 2024</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-green-600">+$5,000</p>
+                            <p class="text-xs text-gray-500">PayPal</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 border border-gray-100 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900">Retiro de ganancias</p>
+                                <p class="text-sm text-gray-500">10 Nov 2024</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-red-600">-$1,200</p>
+                            <p class="text-xs text-gray-500">Banco ****7891</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 border border-gray-100 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900">Pago pendiente</p>
+                                <p class="text-sm text-gray-500">5 Nov 2024</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-yellow-600">$350</p>
+                            <p class="text-xs text-gray-500">En proceso</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg max-w-md w-full m-4 p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Agregar Método de Pago</h3>
+                <button id="closePaymentModal" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="space-y-3 mb-6">
+                <button class="payment-option w-full p-3 border border-gray-200 rounded-lg hover:border-primary transition-colors text-left" data-type="card">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded flex items-center justify-center">
+                            <span class="text-white text-xs font-bold">💳</span>
+                        </div>
+                        <div>
+                            <p class="font-medium">Tarjeta de Crédito/Débito</p>
+                            <p class="text-sm text-gray-500">Visa, Mastercard, American Express</p>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="payment-option w-full p-3 border border-gray-200 rounded-lg hover:border-primary transition-colors text-left" data-type="bank">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-6 bg-gray-600 rounded flex items-center justify-center">
+                            <span class="text-white text-xs">🏦</span>
+                        </div>
+                        <div>
+                            <p class="font-medium">Cuenta Bancaria</p>
+                            <p class="text-sm text-gray-500">Transferencia directa</p>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="payment-option w-full p-3 border border-gray-200 rounded-lg hover:border-primary transition-colors text-left" data-type="paypal">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-6 bg-blue-600 rounded flex items-center justify-center">
+                            <span class="text-white text-xs font-bold">PP</span>
+                        </div>
+                        <div>
+                            <p class="font-medium">PayPal</p>
+                            <p class="text-sm text-gray-500">Pago en línea seguro</p>
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <div id="cardForm" class="hidden space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Número de tarjeta</label>
+                    <input type="text" placeholder="1234 5678 9012 3456" class="form-input w-full">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Vencimiento</label>
+                        <input type="text" placeholder="MM/AA" class="form-input w-full">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                        <input type="text" placeholder="123" class="form-input w-full">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nombre en la tarjeta</label>
+                    <input type="text" placeholder="Juan Pérez" class="form-input w-full">
+                </div>
+                <button class="w-full btn-primary">Agregar Tarjeta</button>
+            </div>
+
+            <div id="bankForm" class="hidden space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del banco</label>
+                    <select class="form-input w-full">
+                        <option>Seleccionar banco</option>
+                        <option>Banco Nacional</option>
+                        <option>Banco de Costa Rica</option>
+                        <option>BAC San José</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Número de cuenta</label>
+                    <input type="text" placeholder="000-000000-0" class="form-input w-full">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tipo de cuenta</label>
+                    <select class="form-input w-full">
+                        <option>Cuenta corriente</option>
+                        <option>Cuenta de ahorros</option>
+                    </select>
+                </div>
+                <button class="w-full btn-primary">Agregar Cuenta</button>
+            </div>
+
+            <div id="paypalForm" class="hidden space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email de PayPal</label>
+                    <input type="email" placeholder="usuario@email.com" class="form-input w-full">
+                </div>
+                <button class="w-full btn-primary">Conectar PayPal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!AgroCoin.requireAuth()) {
+                return;
+            }
+
+            initializePayments();
+        });
+
+        function initializePayments() {
+            setupPaymentModal();
+            updateWelcomeMessage();
+        }
+
+        function updateWelcomeMessage() {
+            const user = AgroCoin.getCurrentUser();
+            const welcomeElement = document.getElementById('userWelcome');
+            if (user && welcomeElement) {
+                welcomeElement.textContent = `Hola, ${user.name || user.email.split('@')[0]}`;
+            }
+        }
+
+        function setupPaymentModal() {
+            const addPaymentBtn = document.getElementById('addPaymentMethod');
+            const modal = document.getElementById('paymentModal');
+            const closeModal = document.getElementById('closePaymentModal');
+            const paymentOptions = document.querySelectorAll('.payment-option');
+
+            addPaymentBtn.addEventListener('click', function() {
+                modal.classList.remove('hidden');
+            });
+
+            closeModal.addEventListener('click', function() {
+                modal.classList.add('hidden');
+                resetModal();
+            });
+
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const type = this.dataset.type;
+                    showPaymentForm(type);
+                });
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    resetModal();
+                }
+            });
+        }
+
+        function showPaymentForm(type) {
+            document.getElementById('cardForm').classList.add('hidden');
+            document.getElementById('bankForm').classList.add('hidden');
+            document.getElementById('paypalForm').classList.add('hidden');
+
+            document.getElementById(type + 'Form').classList.remove('hidden');
+        }
+
+        function resetModal() {
+            document.getElementById('cardForm').classList.add('hidden');
+            document.getElementById('bankForm').classList.add('hidden');
+            document.getElementById('paypalForm').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

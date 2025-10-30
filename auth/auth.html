@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCoin - Iniciar Sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="font-[Manrope] bg-gradient-to-br from-green-50 to-green-100 min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+                <a href="../index.html" class="text-gray-600 hover:text-primary">← Volver al inicio</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div class="text-center">
+                <h2 class="mt-6 text-3xl font-bold text-gray-900">
+                    Bienvenido a AgroCoin
+                </h2>
+                <p class="mt-2 text-sm text-gray-600">
+                    Selecciona tu tipo de cuenta para continuar
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <button id="investorBtn" class="user-type-btn active p-4 rounded-lg border-2 transition-all duration-200">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-sm">Inversor</h3>
+                            <p class="text-xs text-gray-500">Quiero invertir</p>
+                        </div>
+                    </button>
+
+                    <button id="producerBtn" class="user-type-btn p-4 rounded-lg border-2 transition-all duration-200">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-sm">Productor</h3>
+                            <p class="text-xs text-gray-500">Tengo proyectos</p>
+                        </div>
+                    </button>
+                </div>
+
+                <form id="authForm" class="space-y-6">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">
+                            Correo electrónico
+                        </label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            required
+                            class="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                            placeholder="tu@email.com"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">
+                            Contraseña
+                        </label>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            required
+                            class="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                            placeholder="••••••••"
+                        >
+                    </div>
+
+                    <div id="registerFields" class="hidden space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">
+                                Nombre completo
+                            </label>
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                class="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                                placeholder="Tu nombre completo"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="confirmPassword" class="block text-sm font-medium text-gray-700">
+                                Confirmar contraseña
+                            </label>
+                            <input
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                type="password"
+                                class="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                                placeholder="••••••••"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input
+                                id="remember"
+                                name="remember"
+                                type="checkbox"
+                                class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                            >
+                            <label for="remember" class="ml-2 block text-sm text-gray-900">
+                                Recordarme
+                            </label>
+                        </div>
+
+                        <div class="text-sm">
+                            <a href="#" class="font-medium text-primary hover:text-primary-hover">
+                                ¿Olvidaste tu contraseña?
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button
+                            type="submit"
+                            id="submitBtn"
+                            class="btn-primary w-full flex justify-center items-center"
+                            disabled
+                        >
+                            <span id="submitText">Iniciar Sesión</span>
+                            <div id="loadingSpinner" class="hidden ml-2">
+                                <div class="loading-spinner"></div>
+                            </div>
+                        </button>
+                    </div>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">
+                        <span id="toggleText">¿No tienes cuenta?</span>
+                        <button id="toggleMode" class="font-medium text-primary hover:text-primary-hover ml-1">
+                            Regístrate aquí
+                        </button>
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <p class="text-xs text-gray-500">
+                    Al continuar, aceptas nuestros
+                    <a href="#" class="text-primary hover:underline">Términos de Servicio</a> y
+                    <a href="#" class="text-primary hover:underline">Política de Privacidad</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/common.js"></script>
+    <script>
+        let isLoginMode = true;
+        let selectedUserType = 'inversor';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setupUserTypeSelection();
+            setupFormToggle();
+            setupFormSubmission();
+
+            if (AgroCoin.isAuthenticated()) {
+                const user = AgroCoin.getCurrentUser();
+                redirectToDashboard(user.type);
+            }
+        });
+
+        function setupUserTypeSelection() {
+            const investorBtn = document.getElementById('investorBtn');
+            const producerBtn = document.getElementById('producerBtn');
+
+            investorBtn.addEventListener('click', () => selectUserType('inversor'));
+            producerBtn.addEventListener('click', () => selectUserType('productor'));
+        }
+
+        function selectUserType(type) {
+            selectedUserType = type;
+
+            document.querySelectorAll('.user-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            if (type === 'inversor') {
+                document.getElementById('investorBtn').classList.add('active');
+            } else {
+                document.getElementById('producerBtn').classList.add('active');
+            }
+        }
+
+        function setupFormToggle() {
+            const toggleMode = document.getElementById('toggleMode');
+            const toggleText = document.getElementById('toggleText');
+            const submitText = document.getElementById('submitText');
+            const registerFields = document.getElementById('registerFields');
+
+            toggleMode.addEventListener('click', function() {
+                isLoginMode = !isLoginMode;
+
+                if (isLoginMode) {
+                    toggleText.textContent = '¿No tienes cuenta?';
+                    toggleMode.textContent = 'Regístrate aquí';
+                    submitText.textContent = 'Iniciar Sesión';
+                    registerFields.classList.add('hidden');
+                } else {
+                    toggleText.textContent = '¿Ya tienes cuenta?';
+                    toggleMode.textContent = 'Inicia sesión aquí';
+                    submitText.textContent = 'Crear Cuenta';
+                    registerFields.classList.remove('hidden');
+                }
+            });
+        }
+
+        function setupFormSubmission() {
+            const form = document.getElementById('authForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+
+            submitBtn.disabled = false;
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                if (!AgroCoin.isValidEmail(email)) {
+                    AgroCoin.showAlert('Por favor ingresa un email válido', 'error');
+                    return;
+                }
+
+                if (password.length < 3) {
+                    AgroCoin.showAlert('La contraseña debe tener al menos 3 caracteres', 'error');
+                    return;
+                }
+
+                if (!isLoginMode) {
+                    const name = document.getElementById('name').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+
+                    if (!name.trim()) {
+                        AgroCoin.showAlert('Por favor ingresa tu nombre completo', 'error');
+                        return;
+                    }
+
+                    if (password !== confirmPassword) {
+                        AgroCoin.showAlert('Las contraseñas no coinciden', 'error');
+                        return;
+                    }
+                }
+
+                submitBtn.disabled = true;
+                loadingSpinner.classList.remove('hidden');
+
+                try {
+                    await AgroCoin.login(email, password, selectedUserType);
+
+                    AgroCoin.showAlert(
+                        isLoginMode ? 'Sesión iniciada exitosamente' : 'Cuenta creada exitosamente',
+                        'success'
+                    );
+
+                    setTimeout(() => {
+                        redirectToDashboard(selectedUserType);
+                    }, 1500);
+
+                } catch (error) {
+                    AgroCoin.showAlert(error.message || 'Error en la autenticación', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                    loadingSpinner.classList.add('hidden');
+                }
+            });
+        }
+
+        function redirectToDashboard(userType) {
+            if (userType === 'productor') {
+                window.location.href = '../dashboards/dashboard-productor.html';
+            } else {
+                window.location.href = '../dashboards/dashboard-inversor.html';
+            }
+        }
+    </script>
+
+    <style>
+        .user-type-btn {
+            border-color: #e5e7eb;
+        }
+
+        .user-type-btn.active {
+            border-color: #16a34a;
+            background-color: #f0fdf4;
+        }
+
+        .loading-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>

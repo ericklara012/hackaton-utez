@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCoin - Para Productores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="font-[Manrope] bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+
+                <nav class="hidden md:flex gap-6 items-center">
+                    <a href="../index.html" class="nav-link text-gray-600 hover:text-primary">Inicio</a>
+                    <a href="proyectos.html" class="nav-link text-gray-600 hover:text-primary">Proyectos</a>
+                    <a href="mercados.html" class="nav-link text-gray-600 hover:text-primary">Mercados</a>
+                    <a href="inversor.html" class="nav-link text-gray-600 hover:text-primary">Inversores</a>
+                    <a href="productor.html" class="nav-link text-primary font-medium">Productores</a>
+                    <a href="../auth/auth.html" class="btn-primary">Iniciar Sesión</a>
+                </nav>
+
+                <div id="authNav" class="hidden md:flex gap-4 items-center">
+                    <a href="../dashboards/dashboard-productor.html" class="nav-link text-gray-600 hover:text-primary">Dashboard</a>
+                    <a href="mercados.html" class="nav-link text-gray-600 hover:text-primary">Mercados</a>
+                    <a href="metodos_pago.html" class="nav-link text-gray-600 hover:text-primary">Pagos</a>
+                    <span id="userWelcome" class="text-gray-700 font-medium"></span>
+                    <button onclick="logout()" class="text-red-600 hover:text-red-800 font-medium">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="gradient-hero py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold text-gray-900 mb-6 fade-in">
+                Financia tu <span class="text-primary">Proyecto Agrícola</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto fade-in">
+                Conecta con inversores comprometidos y obtén el financiamiento que necesitas para hacer crecer tu proyecto
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
+                <a href="../auth/auth.html" class="btn-primary">Registrar Proyecto</a>
+                <a href="mercados.html" class="btn-secondary">Analizar Mercado</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">¿Por qué elegir AgroCoin?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Financiamiento Rápido</h3>
+                    <p class="text-gray-600">Obtén fondos en 30-60 días una vez aprobado tu proyecto</p>
+                </div>
+
+                <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Red de Inversores</h3>
+                    <p class="text-gray-600">Accede a una amplia red de inversores comprometidos con la agricultura</p>
+                </div>
+
+                <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Soporte Técnico</h3>
+                    <p class="text-gray-600">Recibe asesoría para optimizar tu proyecto y maximizar el éxito</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">¿Cómo funciona?</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">1</div>
+                    <h3 class="text-lg font-semibold mb-2">Registra tu Proyecto</h3>
+                    <p class="text-gray-600">Completa la información detallada de tu proyecto agrícola</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">2</div>
+                    <h3 class="text-lg font-semibold mb-2">Evaluación</h3>
+                    <p class="text-gray-600">Nuestro equipo evalúa la viabilidad y documentación</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">3</div>
+                    <h3 class="text-lg font-semibold mb-2">Publicación</h3>
+                    <p class="text-gray-600">Tu proyecto se publica para atraer inversores</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">4</div>
+                    <h3 class="text-lg font-semibold mb-2">Recibe Fondos</h3>
+                    <p class="text-gray-600">Obtén el financiamiento y ejecuta tu proyecto</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Tipos de Proyectos que Financiamos</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🌱</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Agricultura Orgánica</h3>
+                    <p class="text-gray-600 mb-4">Cultivos orgánicos certificados, agricultura sustentable y métodos ecológicos</p>
+                    <div class="text-sm text-gray-500">
+                        <p>• Certificación orgánica</p>
+                        <p>• Mercados premium</p>
+                        <p>• Retornos del 15-20%</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Tecnología Agrícola</h3>
+                    <p class="text-gray-600 mb-4">Implementación de IoT, drones, sensores y agricultura de precisión</p>
+                    <div class="text-sm text-gray-500">
+                        <p>• Innovación tecnológica</p>
+                        <p>• Mayor eficiencia</p>
+                        <p>• Retornos del 20-25%</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🐄</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Ganadería Sostenible</h3>
+                    <p class="text-gray-600 mb-4">Pastoreo rotacional, ganadería regenerativa y producción responsable</p>
+                    <div class="text-sm text-gray-500">
+                        <p>• Prácticas sostenibles</p>
+                        <p>• Mercado creciente</p>
+                        <p>• Retornos del 16-22%</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">☀️</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Energía Renovable</h3>
+                    <p class="text-gray-600 mb-4">Paneles solares, agrovoltaica y sistemas de energía limpia</p>
+                    <div class="text-sm text-gray-500">
+                        <p>• Doble ingreso</p>
+                        <p>• Incentivos gubernamentales</p>
+                        <p>• Retornos del 18-25%</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🏠</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Invernaderos</h3>
+                    <p class="text-gray-600 mb-4">Cultivos controlados, hidroponía y agricultura vertical</p>
+                    <div class="text-sm text-gray-500">
+                        <p>• Producción año redondo</p>
+                        <p>• Mayor control de calidad</p>
+                        <p>• Retornos del 20-30%</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🌊</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Acuacultura</h3>
+                    <p class="text-gray-600 mb-4">Crianza de peces, camarones y otros productos acuáticos</p>
+                    <div class="text-sm text-gray-500">
+                        <p>• Mercado en crecimiento</p>
+                        <p>• Proteína sostenible</p>
+                        <p>• Retornos del 17-23%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Requisitos para Aplicar</h2>
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Documentación Requerida</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Plan de negocio detallado</li>
+                            <li>✓ Proyecciones financieras</li>
+                            <li>✓ Experiencia comprobable (mín. 2 años)</li>
+                            <li>✓ Permisos y licencias vigentes</li>
+                            <li>✓ Evaluación de impacto ambiental</li>
+                            <li>✓ Referencias comerciales</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Criterios de Evaluación</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Viabilidad técnica y económica</li>
+                            <li>• Experiencia del equipo</li>
+                            <li>• Potencial de mercado</li>
+                            <li>• Sostenibilidad ambiental</li>
+                            <li>• Retorno esperado para inversores</li>
+                            <li>• Gestión de riesgos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Historias de Éxito</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Carlos Mendoza" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">Carlos Mendoza</h4>
+                            <p class="text-sm text-gray-500">Cultivos Orgánicos Valle Verde</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Gracias a AgroCoin pude expandir mi operación orgánica. En 18 meses recaudé $45,000 y logré certificación internacional."</p>
+                    <div class="text-sm text-green-600 font-medium">✓ Proyecto completado exitosamente</div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b25dd95d?w=60&h=60&fit=crop&crop=face" alt="María González" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">María González</h4>
+                            <p class="text-sm text-gray-500">AgroTech Inteligente</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"La plataforma me conectó con inversores que entienden el valor de la agricultura tecnológica. Superamos nuestra meta en 3 meses."</p>
+                    <div class="text-sm text-blue-600 font-medium">✓ Meta superada en 120%</div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" alt="Roberto Silva" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">Roberto Silva</h4>
+                            <p class="text-sm text-gray-500">Ganadería El Roble</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"El proceso fue transparente y eficiente. Los inversores apreciaron nuestro enfoque regenerativo y obtuvimos financiamiento completo."</p>
+                    <div class="text-sm text-yellow-600 font-medium">✓ Financiamiento 100% completado</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">¿Listo para financiar tu proyecto?</h2>
+            <p class="text-xl mb-8 opacity-90">
+                Únete a cientos de productores que ya han obtenido financiamiento exitoso
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../auth/auth.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Registrar Proyecto
+                </a>
+                <a href="mercados.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors">
+                    Analizar Mercado
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../assets/js/common.js"></script>
+</body>
+</html>
+

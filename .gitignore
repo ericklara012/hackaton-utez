@@ -1,0 +1,61 @@
+# Directorios de compilación y dependencias
+target/
+node_modules/
+dist/
+build/
+
+# Archivos de Rust
+**/*.rs.bk
+Cargo.lock
+
+# Archivos de compilación WASM
+*.wasm
+!*.optimized.wasm
+
+# Archivos de configuración del IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de logs
+*.log
+logs/
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+
+# Archivos de configuración local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de caché
+.cache/
+.parcel-cache/
+
+# Archivos de Soroban
+.soroban/
+*.wasm.map
+
+# Archivos de respaldo
+*.bak
+*.backup
+
+# Archivos de test snapshots (a menos que sean importantes)
+test_snapshots/
+
+# Archivos sensibles (nunca incluir claves privadas)
+*.pem
+*.key
+secrets/

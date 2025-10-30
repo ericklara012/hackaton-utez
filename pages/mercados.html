@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCoin - Análisis de Mercados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="font-[Manrope] bg-gray-50">
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+
+                <nav class="hidden md:flex gap-6 items-center">
+                    <a href="../index.html" class="nav-link text-gray-600 hover:text-primary">Inicio</a>
+                    <a href="proyectos.html" class="nav-link text-gray-600 hover:text-primary">Proyectos</a>
+                    <a href="mercados.html" class="nav-link text-primary font-medium">Mercados</a>
+                    <a href="inversor.html" class="nav-link text-gray-600 hover:text-primary">Inversores</a>
+                    <a href="productor.html" class="nav-link text-gray-600 hover:text-primary">Productores</a>
+                    <a href="../auth/auth.html" class="btn-primary">Iniciar Sesión</a>
+                </nav>
+
+                <div id="authNav" class="hidden md:flex gap-4 items-center">
+                    <a href="../dashboards/dashboard-inversor.html" class="nav-link text-gray-600 hover:text-primary">Dashboard</a>
+                    <a href="portafolio.html" class="nav-link text-gray-600 hover:text-primary">Portafolio</a>
+                    <a href="metodos_pago.html" class="nav-link text-gray-600 hover:text-primary">Pagos</a>
+                    <span id="userWelcome" class="text-gray-700 font-medium"></span>
+                    <button onclick="logout()" class="text-red-600 hover:text-red-800 font-medium">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Análisis de Mercados Agrícolas</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Mantente informado con datos en tiempo real sobre tendencias, precios y oportunidades del mercado agrícola
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Índice AgroCoin</p>
+                        <p class="text-2xl font-bold text-gray-900">1,247.5</p>
+                    </div>
+                    <div class="p-3 bg-green-100 rounded-full">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="text-green-500 text-sm font-medium">+2.8%</span>
+                    <span class="text-gray-500 text-sm">últimas 24h</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Volumen Diario</p>
+                        <p class="text-2xl font-bold text-gray-900">$2.4M</p>
+                    </div>
+                    <div class="p-3 bg-blue-100 rounded-full">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="text-blue-500 text-sm font-medium">+15.2%</span>
+                    <span class="text-gray-500 text-sm">vs promedio</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Proyectos Activos</p>
+                        <p class="text-2xl font-bold text-gray-900">156</p>
+                    </div>
+                    <div class="p-3 bg-yellow-100 rounded-full">
+                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="text-green-500 text-sm font-medium">+12 nuevos</span>
+                    <span class="text-gray-500 text-sm">esta semana</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">ROI Promedio</p>
+                        <p class="text-2xl font-bold text-gray-900">18.5%</p>
+                    </div>
+                    <div class="p-3 bg-purple-100 rounded-full">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="text-green-500 text-sm font-medium">+1.2%</span>
+                    <span class="text-gray-500 text-sm">anual</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Tendencias del Mercado</h3>
+                <div class="chart-container">
+                    <canvas id="marketTrendsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Rendimiento por Sector</h3>
+                <div class="chart-container">
+                    <canvas id="sectorChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h3 class="text-lg font-semibold text-gray-900 mb-6">Precios de Commodities</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Commodity</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Precio Actual</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Cambio 24h</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Cambio 7d</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Volumen</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Gráfico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+                                        🌽
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-gray-900">Maíz</div>
+                                        <div class="text-sm text-gray-500">Orgánico</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 font-medium text-gray-900">$285.50/ton</td>
+                            <td class="py-3 px-4">
+                                <span class="text-green-600 font-medium">+2.8%</span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="text-green-600 font-medium">+5.2%</span>
+                            </td>
+                            <td class="py-3 px-4 text-gray-500">1,250 ton</td>
+                            <td class="py-3 px-4">
+                                <div class="w-16 h-8 bg-green-100 rounded flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                        🥬
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-gray-900">Lechuga</div>
+                                        <div class="text-sm text-gray-500">Hidropónica</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 font-medium text-gray-900">$1,850/ton</td>
+                            <td class="py-3 px-4">
+                                <span class="text-red-600 font-medium">-1.2%</span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="text-green-600 font-medium">+3.8%</span>
+                            </td>
+                            <td class="py-3 px-4 text-gray-500">450 ton</td>
+                            <td class="py-3 px-4">
+                                <div class="w-16 h-8 bg-red-100 rounded flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">
+                                        🍅
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-gray-900">Tomate</div>
+                                        <div class="text-sm text-gray-500">Invernadero</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 font-medium text-gray-900">$2,350/ton</td>
+                            <td class="py-3 px-4">
+                                <span class="text-green-600 font-medium">+4.5%</span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="text-green-600 font-medium">+8.1%</span>
+                            </td>
+                            <td class="py-3 px-4 text-gray-500">890 ton</td>
+                            <td class="py-3 px-4">
+                                <div class="w-16 h-8 bg-green-100 rounded flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-6">Noticias del Mercado</h3>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-medium text-gray-900">Nueva Regulación Favorece Agricultura Orgánica</h4>
+                        <p class="text-sm text-gray-600 mt-1">El gobierno anuncia incentivos fiscales para productores orgánicos certificados.</p>
+                        <span class="text-xs text-gray-500">Hace 2 horas</span>
+                    </div>
+
+                    <div class="border-l-4 border-blue-500 pl-4">
+                        <h4 class="font-medium text-gray-900">Avances en Tecnología AgTech Impulsan Inversiones</h4>
+                        <p class="text-sm text-gray-600 mt-1">Nuevas startups de agricultura inteligente captan $50M en inversión.</p>
+                        <span class="text-xs text-gray-500">Hace 4 horas</span>
+                    </div>
+
+                    <div class="border-l-4 border-yellow-500 pl-4">
+                        <h4 class="font-medium text-gray-900">Condiciones Climáticas Afectan Precios</h4>
+                        <p class="text-sm text-gray-600 mt-1">Sequía en regiones clave impulsa precios de granos básicos.</p>
+                        <span class="text-xs text-gray-500">Hace 6 horas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-6">Insights del Mercado</h3>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-medium text-gray-900 mb-2">Oportunidades de Inversión</h4>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <p class="text-sm text-green-800">Agricultura vertical presenta crecimiento del 25% anual</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-medium text-gray-900 mb-2">Tendencia Alcista</h4>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <p class="text-sm text-blue-800">Proyectos de energía renovable en agricultura suben 18%</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-medium text-gray-900 mb-2">Alerta de Riesgo</h4>
+                        <div class="bg-yellow-50 p-3 rounded-lg">
+                            <p class="text-sm text-yellow-800">Volatilidad esperada en cultivos tradicionales por clima</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setupCharts();
+        });
+
+        function setupCharts() {
+            const trendsCtx = document.getElementById('marketTrendsChart').getContext('2d');
+            new Chart(trendsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                    datasets: [
+                        {
+                            label: 'Índice AgroCoin',
+                            data: [1180, 1205, 1190, 1220, 1235, 1247],
+                            borderColor: '#16a34a',
+                            backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Volumen ($M)',
+                            data: [1.8, 2.1, 1.9, 2.3, 2.2, 2.4],
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.4,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                        }
+                    }
+                }
+            });
+
+            const sectorCtx = document.getElementById('sectorChart').getContext('2d');
+            new Chart(sectorCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Agricultura Orgánica', 'Tecnología', 'Ganadería', 'Energía Renovable'],
+                    datasets: [{
+                        label: 'ROI Promedio (%)',
+                        data: [18.5, 22.3, 16.8, 20.1],
+                        backgroundColor: [
+                            '#16a34a',
+                            '#3b82f6',
+                            '#f59e0b',
+                            '#8b5cf6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        setInterval(function() {
+            updateMarketData();
+        }, 30000); 
+
+        function updateMarketData() {
+            console.log('Actualizando datos del mercado...');
+        }
+    </script>
+</body>
+</html>

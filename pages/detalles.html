@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCoin - Detalles del Proyecto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="font-[Manrope] bg-gray-50">
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+
+                <nav class="hidden md:flex gap-6 items-center">
+                    <a href="../index.html" class="nav-link text-gray-600 hover:text-primary">Inicio</a>
+                    <a href="proyectos.html" class="nav-link text-gray-600 hover:text-primary">Proyectos</a>
+                    <a href="mercados.html" class="nav-link text-gray-600 hover:text-primary">Mercados</a>
+                    <a href="inversor.html" class="nav-link text-gray-600 hover:text-primary">Inversores</a>
+                    <a href="productor.html" class="nav-link text-gray-600 hover:text-primary">Productores</a>
+                    <a href="../auth/auth.html" class="btn-primary">Iniciar Sesión</a>
+                </nav>
+
+                <div id="authNav" class="hidden md:flex gap-4 items-center">
+                    <a href="../dashboards/dashboard-inversor.html" class="nav-link text-gray-600 hover:text-primary">Dashboard</a>
+                    <a href="portafolio.html" class="nav-link text-gray-600 hover:text-primary">Portafolio</a>
+                    <a href="metodos_pago.html" class="nav-link text-gray-600 hover:text-primary">Pagos</a>
+                    <span id="userWelcome" class="text-gray-700 font-medium"></span>
+                    <button onclick="logout()" class="text-red-600 hover:text-red-800 font-medium">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <nav class="flex mb-8" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="../index.html" class="text-gray-700 hover:text-primary">Inicio</a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <span class="text-gray-400 mx-2">/</span>
+                        <a href="proyectos.html" class="text-gray-700 hover:text-primary">Proyectos</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <span class="text-gray-400 mx-2">/</span>
+                        <span class="text-gray-500">Detalles del Proyecto</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="relative h-64 md:h-80">
+                <img id="projectImage" src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=400&fit=crop" alt="Proyecto" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+                    <div class="p-6 text-white">
+                        <span id="projectCategory" class="inline-flex px-3 py-1 text-sm font-semibold rounded-full bg-green-600">
+                            Cultivos Orgánicos
+                        </span>
+                        <h1 id="projectTitle" class="text-3xl font-bold mt-2">Cultivos Orgánicos Valle Verde</h1>
+                        <p id="projectLocation" class="text-lg opacity-90">Valle Central, Costa Rica</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Descripción del Proyecto</h2>
+                    <div id="projectDescription" class="prose max-w-none text-gray-600">
+                        <p>Este proyecto se enfoca en la producción de vegetales orgánicos certificados utilizando técnicas de agricultura sostenible y tecnología de riego eficiente. Nuestro objetivo es proporcionar alimentos frescos y saludables mientras generamos retornos atractivos para nuestros inversores.</p>
+
+                        <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-3">Objetivos Principales</h3>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Producir 500 toneladas de vegetales orgánicos certificados anualmente</li>
+                            <li>Implementar sistemas de riego inteligente para optimizar el uso del agua</li>
+                            <li>Crear 25 empleos directos en la comunidad local</li>
+                            <li>Obtener certificación orgánica internacional</li>
+                        </ul>
+
+                        <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-3">Ventajas Competitivas</h3>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Ubicación estratégica con clima ideal para cultivos orgánicos</li>
+                            <li>Equipo con más de 15 años de experiencia en agricultura orgánica</li>
+                            <li>Contratos firmados con distribuidores locales e internacionales</li>
+                            <li>Tecnología de vanguardia en monitoreo y control de cultivos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Proyecciones Financieras</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4 font-medium text-gray-500">Período</th>
+                                    <th class="text-left py-3 px-4 font-medium text-gray-500">Ingresos</th>
+                                    <th class="text-left py-3 px-4 font-medium text-gray-500">Gastos</th>
+                                    <th class="text-left py-3 px-4 font-medium text-gray-500">Ganancia</th>
+                                    <th class="text-left py-3 px-4 font-medium text-gray-500">ROI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium">Año 1</td>
+                                    <td class="py-3 px-4 text-green-600">$35,000</td>
+                                    <td class="py-3 px-4 text-red-600">$22,000</td>
+                                    <td class="py-3 px-4 font-medium">$13,000</td>
+                                    <td class="py-3 px-4 font-bold text-green-600">18%</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium">Año 2</td>
+                                    <td class="py-3 px-4 text-green-600">$42,000</td>
+                                    <td class="py-3 px-4 text-red-600">$24,000</td>
+                                    <td class="py-3 px-4 font-medium">$18,000</td>
+                                    <td class="py-3 px-4 font-bold text-green-600">25%</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium">Año 3</td>
+                                    <td class="py-3 px-4 text-green-600">$48,000</td>
+                                    <td class="py-3 px-4 text-red-600">$26,000</td>
+                                    <td class="py-3 px-4 font-medium">$22,000</td>
+                                    <td class="py-3 px-4 font-bold text-green-600">30%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Equipo del Proyecto</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Carlos Mendoza" class="w-16 h-16 rounded-full object-cover">
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Carlos Mendoza</h3>
+                                <p class="text-sm text-gray-600">Director del Proyecto</p>
+                                <p class="text-xs text-gray-500">15 años en agricultura orgánica</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b25dd95d?w=80&h=80&fit=crop&crop=face" alt="María González" class="w-16 h-16 rounded-full object-cover">
+                            <div>
+                                <h3 class="font-semibold text-gray-900">María González</h3>
+                                <p class="text-sm text-gray-600">Ingeniera Agrónoma</p>
+                                <p class="text-xs text-gray-500">Especialista en cultivos orgánicos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Documentos del Proyecto</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                    <p class="font-medium text-gray-900">Plan de Negocio.pdf</p>
+                                    <p class="text-sm text-gray-500">2.3 MB</p>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-primary-hover font-medium">Descargar</button>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                    <p class="font-medium text-gray-900">Certificaciones.pdf</p>
+                                    <p class="text-sm text-gray-500">1.1 MB</p>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-primary-hover font-medium">Descargar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Resumen de Inversión</h3>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Meta de financiamiento:</span>
+                            <span class="font-semibold">$25,000</span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Recaudado:</span>
+                            <span class="font-semibold text-green-600">$18,500</span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Progreso:</span>
+                            <span class="font-semibold">74%</span>
+                        </div>
+
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-green-600 h-3 rounded-full" style="width: 74%"></div>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Inversión mínima:</span>
+                            <span class="font-semibold">$1,000</span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">ROI esperado:</span>
+                            <span class="font-semibold text-green-600">18%</span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Duración:</span>
+                            <span class="font-semibold">12 meses</span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Inversores:</span>
+                            <span class="font-semibold">23</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 space-y-3">
+                        <button id="investBtn" class="w-full btn-primary">Invertir Ahora</button>
+                        <button class="w-full btn-secondary">Agregar a Favoritos</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Calculadora de Inversión</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Monto a invertir</label>
+                            <input
+                                type="number"
+                                id="investmentAmount"
+                                min="1000"
+                                step="100"
+                                value="5000"
+                                class="form-input w-full"
+                                placeholder="$1,000"
+                            >
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between text-sm">
+                                <span>Retorno estimado (18%):</span>
+                                <span id="estimatedReturn" class="font-semibold text-green-600">$900</span>
+                            </div>
+                            <div class="flex justify-between text-sm mt-2">
+                                <span>Total después de 12 meses:</span>
+                                <span id="totalReturn" class="font-semibold">$5,900</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Estado del Proyecto</h3>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">Verificación completada</span>
+                            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">Documentos legales</span>
+                            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">Evaluación de riesgo</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Bajo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Contactar Productor</h3>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" alt="Productor" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-medium text-gray-900">Carlos Mendoza</p>
+                            <p class="text-sm text-gray-500">Responde en < 2 horas</p>
+                        </div>
+                    </div>
+                    <button class="w-full btn-secondary">Enviar Mensaje</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="investmentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg max-w-md w-full m-4 p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Confirmar Inversión</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Proyecto:</p>
+                    <p class="font-semibold">Cultivos Orgánicos Valle Verde</p>
+                </div>
+
+                <div class="flex justify-between">
+                    <span>Monto a invertir:</span>
+                    <span id="modalAmount" class="font-semibold">$5,000</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span>Retorno esperado:</span>
+                    <span id="modalReturn" class="font-semibold text-green-600">$900</span>
+                </div>
+
+                <button id="confirmInvestment" class="w-full btn-primary">Confirmar Inversión</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProjectDetails();
+            setupInvestmentCalculator();
+            setupInvestmentModal();
+        });
+
+        function loadProjectDetails() {
+            const projectId = localStorage.getItem('selectedProjectId');
+            if (projectId) {
+                console.log('Cargando proyecto ID:', projectId);
+            }
+        }
+
+        function setupInvestmentCalculator() {
+            const amountInput = document.getElementById('investmentAmount');
+            const estimatedReturn = document.getElementById('estimatedReturn');
+            const totalReturn = document.getElementById('totalReturn');
+
+            function updateCalculations() {
+                const amount = parseFloat(amountInput.value) || 0;
+                const roi = 0.18; 
+                const returnAmount = amount * roi;
+                const total = amount + returnAmount;
+
+                estimatedReturn.textContent = AgroCoin.formatCurrency(returnAmount);
+                totalReturn.textContent = AgroCoin.formatCurrency(total);
+            }
+
+            amountInput.addEventListener('input', updateCalculations);
+            updateCalculations(); 
+        }
+
+        function setupInvestmentModal() {
+            const investBtn = document.getElementById('investBtn');
+            const modal = document.getElementById('investmentModal');
+            const closeModal = document.getElementById('closeModal');
+            const confirmBtn = document.getElementById('confirmInvestment');
+
+            investBtn.addEventListener('click', function() {
+                if (!AgroCoin.isAuthenticated()) {
+                    AgroCoin.showAlert('Debes iniciar sesión para invertir', 'warning');
+                    setTimeout(() => {
+                        window.location.href = '../auth/auth.html';
+                    }, 2000);
+                    return;
+                }
+
+                const amount = document.getElementById('investmentAmount').value;
+                const returnAmount = parseFloat(amount) * 0.18;
+
+                document.getElementById('modalAmount').textContent = AgroCoin.formatCurrency(amount);
+                document.getElementById('modalReturn').textContent = AgroCoin.formatCurrency(returnAmount);
+
+                modal.classList.remove('hidden');
+            });
+
+            closeModal.addEventListener('click', function() {
+                modal.classList.add('hidden');
+            });
+
+            confirmBtn.addEventListener('click', function() {
+                AgroCoin.showAlert('Inversión procesada exitosamente', 'success');
+                modal.classList.add('hidden');
+
+                setTimeout(() => {
+                    window.location.href = 'portafolio.html';
+                }, 2000);
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

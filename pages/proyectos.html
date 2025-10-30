@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCoin - Proyectos de Inversión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="font-[Manrope] bg-gray-50">
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+
+                <nav class="hidden md:flex gap-6 items-center">
+                    <a href="../index.html" class="nav-link text-gray-600 hover:text-primary">Inicio</a>
+                    <a href="proyectos.html" class="nav-link text-primary font-medium">Proyectos</a>
+                    <a href="mercados.html" class="nav-link text-gray-600 hover:text-primary">Mercados</a>
+                    <a href="inversor.html" class="nav-link text-gray-600 hover:text-primary">Inversores</a>
+                    <a href="productor.html" class="nav-link text-gray-600 hover:text-primary">Productores</a>
+                    <a href="../auth/auth.html" class="btn-primary">Iniciar Sesión</a>
+                </nav>
+
+                <div id="authNav" class="hidden md:flex gap-4 items-center">
+                    <a href="../dashboards/dashboard-inversor.html" class="nav-link text-gray-600 hover:text-primary">Dashboard</a>
+                    <a href="portafolio.html" class="nav-link text-gray-600 hover:text-primary">Portafolio</a>
+                    <a href="metodos_pago.html" class="nav-link text-gray-600 hover:text-primary">Pagos</a>
+                    <span id="userWelcome" class="text-gray-700 font-medium"></span>
+                    <button onclick="logout()" class="text-red-600 hover:text-red-800 font-medium">Cerrar Sesión</button>
+                </div>
+
+                <button id="mobileMenuBtn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Proyectos de Inversión</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Descubre oportunidades de inversión en proyectos agrícolas sostenibles con retornos atractivos
+            </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label for="categoryFilter" class="block text-sm font-medium text-gray-700 mb-2">Categoría</label>
+                    <select id="categoryFilter" class="form-input w-full">
+                        <option value="">Todas las categorías</option>
+                        <option value="organicos">Cultivos Orgánicos</option>
+                        <option value="tecnologia">Tecnología Agrícola</option>
+                        <option value="ganaderia">Ganadería Sostenible</option>
+                        <option value="energia">Energía Renovable</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="investmentFilter" class="block text-sm font-medium text-gray-700 mb-2">Inversión Mínima</label>
+                    <select id="investmentFilter" class="form-input w-full">
+                        <option value="">Cualquier monto</option>
+                        <option value="1000">$1,000 - $5,000</option>
+                        <option value="5000">$5,000 - $10,000</option>
+                        <option value="10000">$10,000+</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="returnFilter" class="block text-sm font-medium text-gray-700 mb-2">Retorno Esperado</label>
+                    <select id="returnFilter" class="form-input w-full">
+                        <option value="">Cualquier retorno</option>
+                        <option value="10">10% - 15%</option>
+                        <option value="15">15% - 20%</option>
+                        <option value="20">20%+</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="durationFilter" class="block text-sm font-medium text-gray-700 mb-2">Duración</label>
+                    <select id="durationFilter" class="form-input w-full">
+                        <option value="">Cualquier duración</option>
+                        <option value="6">6 meses</option>
+                        <option value="12">1 año</option>
+                        <option value="24">2 años</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-4 flex justify-between items-center">
+                <button id="clearFilters" class="text-gray-500 hover:text-gray-700">Limpiar filtros</button>
+                <div class="text-sm text-gray-500">
+                    <span id="resultsCount">24 proyectos encontrados</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover project-card" data-category="organicos" data-investment="5000" data-return="18" data-duration="12">
+                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&h=200&fit=crop" alt="Cultivos Orgánicos" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                            Cultivos Orgánicos
+                        </span>
+                        <span class="text-green-600 font-bold">18% ROI</span>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Cultivos Orgánicos Valle Verde</h3>
+                    <p class="text-gray-600 text-sm mb-4">Producción de vegetales orgánicos certificados con tecnología de riego eficiente.</p>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Progreso</span>
+                            <span>$18,500 / $25,000</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-600 h-2 rounded-full" style="width: 74%"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
+                        <div>
+                            <span class="font-medium">Mín. inversión:</span>
+                            <div>$1,000</div>
+                        </div>
+                        <div>
+                            <span class="font-medium">Duración:</span>
+                            <div>12 meses</div>
+                        </div>
+                    </div>
+
+                    <button onclick="viewProject(1)" class="w-full btn-primary">Ver Detalles</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover project-card" data-category="tecnologia" data-investment="10000" data-return="22" data-duration="18">
+                <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=200&fit=crop" alt="Tecnología Agrícola" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                            Tecnología Agrícola
+                        </span>
+                        <span class="text-green-600 font-bold">22% ROI</span>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Sistema AgroTech Inteligente</h3>
+                    <p class="text-gray-600 text-sm mb-4">Implementación de IoT y AI para optimización de cultivos y maximización de rendimientos.</p>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Progreso</span>
+                            <span>$32,000 / $50,000</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full" style="width: 64%"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
+                        <div>
+                            <span class="font-medium">Mín. inversión:</span>
+                            <div>$2,500</div>
+                        </div>
+                        <div>
+                            <span class="font-medium">Duración:</span>
+                            <div>18 meses</div>
+                        </div>
+                    </div>
+
+                    <button onclick="viewProject(2)" class="w-full btn-primary">Ver Detalles</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover project-card" data-category="ganaderia" data-investment="7500" data-return="16" data-duration="24">
+                <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=400&h=200&fit=crop" alt="Ganadería Sostenible" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                            Ganadería Sostenible
+                        </span>
+                        <span class="text-green-600 font-bold">16% ROI</span>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Ganadería Regenerativa El Roble</h3>
+                    <p class="text-gray-600 text-sm mb-4">Pastoreo rotacional y prácticas regenerativas para la producción sostenible de carne.</p>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Progreso</span>
+                            <span>$45,000 / $60,000</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-600 h-2 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
+                        <div>
+                            <span class="font-medium">Mín. inversión:</span>
+                            <div>$1,500</div>
+                        </div>
+                        <div>
+                            <span class="font-medium">Duración:</span>
+                            <div>24 meses</div>
+                        </div>
+                    </div>
+
+                    <button onclick="viewProject(3)" class="w-full btn-primary">Ver Detalles</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover project-card" data-category="energia" data-investment="15000" data-return="20" data-duration="36">
+                <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&h=200&fit=crop" alt="Energía Solar" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
+                            Energía Renovable
+                        </span>
+                        <span class="text-green-600 font-bold">20% ROI</span>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Granja Solar Agrovoltaica</h3>
+                    <p class="text-gray-600 text-sm mb-4">Combinación de producción agrícola y generación de energía solar en el mismo terreno.</p>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Progreso</span>
+                            <span>$80,000 / $100,000</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-purple-600 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
+                        <div>
+                            <span class="font-medium">Mín. inversión:</span>
+                            <div>$5,000</div>
+                        </div>
+                        <div>
+                            <span class="font-medium">Duración:</span>
+                            <div>36 meses</div>
+                        </div>
+                    </div>
+
+                    <button onclick="viewProject(4)" class="w-full btn-primary">Ver Detalles</button>
+                </div>
+            </div>
+
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover project-card" data-category="organicos" data-investment="3000" data-return="15" data-duration="8">
+                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=200&fit=crop" alt="Huerto Urbano" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                            Cultivos Orgánicos
+                        </span>
+                        <span class="text-green-600 font-bold">15% ROI</span>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Huertos Urbanos Verticales</h3>
+                    <p class="text-gray-600 text-sm mb-4">Agricultura urbana vertical para producción local de vegetales frescos.</p>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Progreso</span>
+                            <span>$12,000 / $20,000</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-600 h-2 rounded-full" style="width: 60%"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
+                        <div>
+                            <span class="font-medium">Mín. inversión:</span>
+                            <div>$500</div>
+                        </div>
+                        <div>
+                            <span class="font-medium">Duración:</span>
+                            <div>8 meses</div>
+                        </div>
+                    </div>
+
+                    <button onclick="viewProject(5)" class="w-full btn-primary">Ver Detalles</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover project-card" data-category="tecnologia" data-investment="8000" data-return="19" data-duration="15">
+                <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=200&fit=crop" alt="Drones Agrícolas" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                            Tecnología Agrícola
+                        </span>
+                        <span class="text-green-600 font-bold">19% ROI</span>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Monitoreo con Drones IA</h3>
+                    <p class="text-gray-600 text-sm mb-4">Sistema de drones con inteligencia artificial para monitoreo y optimización de cultivos.</p>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Progreso</span>
+                            <span>$28,500 / $40,000</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full" style="width: 71%"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
+                        <div>
+                            <span class="font-medium">Mín. inversión:</span>
+                            <div>$2,000</div>
+                        </div>
+                        <div>
+                            <span class="font-medium">Duración:</span>
+                            <div>15 meses</div>
+                        </div>
+                    </div>
+
+                    <button onclick="viewProject(6)" class="w-full btn-primary">Ver Detalles</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <button id="loadMoreBtn" class="btn-secondary">Cargar más proyectos</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/common.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFilters();
+            updateResultsCount();
+        });
+
+        function setupFilters() {
+            const filters = ['categoryFilter', 'investmentFilter', 'returnFilter', 'durationFilter'];
+
+            filters.forEach(filterId => {
+                document.getElementById(filterId).addEventListener('change', applyFilters);
+            });
+
+            document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
+        }
+
+        function applyFilters() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const investmentFilter = document.getElementById('investmentFilter').value;
+            const returnFilter = document.getElementById('returnFilter').value;
+            const durationFilter = document.getElementById('durationFilter').value;
+
+            const projectCards = document.querySelectorAll('.project-card');
+            let visibleCount = 0;
+
+            projectCards.forEach(card => {
+                let shouldShow = true;
+
+                
+                if (categoryFilter && card.dataset.category !== categoryFilter) {
+                    shouldShow = false;
+                }
+                
+                if (investmentFilter) {
+                    const cardInvestment = parseInt(card.dataset.investment);
+                    const filterValue = parseInt(investmentFilter);
+
+                    if (filterValue === 1000 && (cardInvestment < 1000 || cardInvestment > 5000)) {
+                        shouldShow = false;
+                    } else if (filterValue === 5000 && (cardInvestment < 5000 || cardInvestment > 10000)) {
+                        shouldShow = false;
+                    } else if (filterValue === 10000 && cardInvestment < 10000) {
+                        shouldShow = false;
+                    }
+                }
+
+                if (returnFilter) {
+                    const cardReturn = parseInt(card.dataset.return);
+                    const filterValue = parseInt(returnFilter);
+
+                    if (filterValue === 10 && (cardReturn < 10 || cardReturn > 15)) {
+                        shouldShow = false;
+                    } else if (filterValue === 15 && (cardReturn < 15 || cardReturn > 20)) {
+                        shouldShow = false;
+                    } else if (filterValue === 20 && cardReturn < 20) {
+                        shouldShow = false;
+                    }
+                }
+
+                if (durationFilter) {
+                    const cardDuration = parseInt(card.dataset.duration);
+                    const filterValue = parseInt(durationFilter);
+
+                    if (cardDuration !== filterValue) {
+                        shouldShow = false;
+                    }
+                }
+
+                if (shouldShow) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            updateResultsCount(visibleCount);
+        }
+
+        function clearAllFilters() {
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('investmentFilter').value = '';
+            document.getElementById('returnFilter').value = '';
+            document.getElementById('durationFilter').value = '';
+
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.style.display = 'block';
+            });
+
+            updateResultsCount();
+        }
+
+        function updateResultsCount(count = null) {
+            const resultsElement = document.getElementById('resultsCount');
+            if (count === null) {
+                count = document.querySelectorAll('.project-card').length;
+            }
+            resultsElement.textContent = `${count} proyecto${count !== 1 ? 's' : ''} encontrado${count !== 1 ? 's' : ''}`;
+        }
+
+        function viewProject(projectId) {
+            localStorage.setItem('selectedProjectId', projectId);
+            window.location.href = 'detalles.html';
+        }
+
+        document.getElementById('loadMoreBtn').addEventListener('click', function() {
+            AgroCoin.showAlert('Función de cargar más proyectos en desarrollo', 'info');
+        });
+    </script>
+</body>
+</html>

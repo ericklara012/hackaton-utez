@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCoin - Para Inversores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="font-[Manrope] bg-gray-50">
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+
+                <nav class="hidden md:flex gap-6 items-center">
+                    <a href="../index.html" class="nav-link text-gray-600 hover:text-primary">Inicio</a>
+                    <a href="proyectos.html" class="nav-link text-gray-600 hover:text-primary">Proyectos</a>
+                    <a href="mercados.html" class="nav-link text-gray-600 hover:text-primary">Mercados</a>
+                    <a href="inversor.html" class="nav-link text-primary font-medium">Inversores</a>
+                    <a href="productor.html" class="nav-link text-gray-600 hover:text-primary">Productores</a>
+                    <a href="../auth/auth.html" class="btn-primary">Iniciar Sesión</a>
+                </nav>
+
+                <div id="authNav" class="hidden md:flex gap-4 items-center">
+                    <a href="../dashboards/dashboard-inversor.html" class="nav-link text-gray-600 hover:text-primary">Dashboard</a>
+                    <a href="portafolio.html" class="nav-link text-gray-600 hover:text-primary">Portafolio</a>
+                    <a href="metodos_pago.html" class="nav-link text-gray-600 hover:text-primary">Pagos</a>
+                    <span id="userWelcome" class="text-gray-700 font-medium"></span>
+                    <button onclick="logout()" class="text-red-600 hover:text-red-800 font-medium">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="gradient-hero py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold text-gray-900 mb-6 fade-in">
+                Invierte en el <span class="text-primary">Futuro Agrícola</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto fade-in">
+                Obtén retornos atractivos mientras contribuyes al desarrollo de una agricultura más sostenible y rentable
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
+                <a href="../auth/auth.html" class="btn-primary">Empezar a Invertir</a>
+                <a href="proyectos.html" class="btn-secondary">Ver Proyectos</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">¿Por qué invertir con AgroCoin?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Retornos del 15-25%</h3>
+                    <p class="text-gray-600">Obtén rendimientos superiores al mercado tradicional con proyectos agrícolas verificados</p>
+                </div>
+
+                <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Proyectos Verificados</h3>
+                    <p class="text-gray-600">Todos los proyectos pasan por un riguroso proceso de evaluación y verificación</p>
+                </div>
+
+                <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16l3-1m-3 1l-3-1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Diversificación</h3>
+                    <p class="text-gray-600">Diversifica tu portafolio con activos alternativos de bajo riesgo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">¿Cómo funciona?</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">1</div>
+                    <h3 class="text-lg font-semibold mb-2">Regístrate</h3>
+                    <p class="text-gray-600">Crea tu cuenta gratuita en menos de 5 minutos</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">2</div>
+                    <h3 class="text-lg font-semibold mb-2">Explora Proyectos</h3>
+                    <p class="text-gray-600">Revisa y analiza los proyectos disponibles</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">3</div>
+                    <h3 class="text-lg font-semibold mb-2">Invierte</h3>
+                    <p class="text-gray-600">Elige el monto que deseas invertir desde $500</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">4</div>
+                    <h3 class="text-lg font-semibold mb-2">Recibe Retornos</h3>
+                    <p class="text-gray-600">Obtén tus ganancias de forma automática</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Opciones de Inversión</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-semibold mb-2">Inversión Básica</h3>
+                        <div class="text-3xl font-bold text-primary mb-2">$500+</div>
+                        <p class="text-gray-600">Perfecto para comenzar</p>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Acceso a proyectos verificados
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Dashboard básico
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Soporte por email
+                        </li>
+                    </ul>
+                    <button class="w-full btn-secondary">Empezar</button>
+                </div>
+
+                <div class="border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">Recomendado</span>
+                    </div>
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-semibold mb-2">Inversión Premium</h3>
+                        <div class="text-3xl font-bold text-primary mb-2">$2,500+</div>
+                        <p class="text-gray-600">Para inversores serios</p>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Acceso a proyectos exclusivos
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Analytics avanzados
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Asesor personal
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Soporte prioritario
+                        </li>
+                    </ul>
+                    <button class="w-full btn-primary">Empezar</button>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-semibold mb-2">Inversión Institucional</h3>
+                        <div class="text-3xl font-bold text-primary mb-2">$25,000+</div>
+                        <p class="text-gray-600">Para grandes inversores</p>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Proyectos a medida
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Reportes personalizados
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Gerente de cuenta dedicado
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Condiciones preferenciales
+                        </li>
+                    </ul>
+                    <button class="w-full btn-secondary">Contactar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Gestión de Riesgos</h2>
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Medidas de Protección</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Evaluación rigurosa de proyectos</li>
+                            <li>• Verificación de antecedentes de productores</li>
+                            <li>• Monitoreo continuo de inversiones</li>
+                            <li>• Seguros para proyectos agrícolas</li>
+                            <li>• Diversificación recomendada</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Factores de Riesgo</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Condiciones climáticas adversas</li>
+                            <li>• Fluctuaciones del mercado</li>
+                            <li>• Riesgos operacionales</li>
+                            <li>• Cambios regulatorios</li>
+                            <li>• Riesgo de liquidez</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                    <p class="text-sm text-yellow-800">
+                        <strong>Importante:</strong> Todas las inversiones conllevan riesgos. Los rendimientos pasados no garantizan resultados futuros.
+                        Recomendamos leer toda la documentación antes de invertir.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">¿Listo para empezar a invertir?</h2>
+            <p class="text-xl mb-8 opacity-90">
+                Únete a cientos de inversores que ya están obteniendo retornos atractivos con AgroCoin
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../auth/auth.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Crear Cuenta Gratis
+                </a>
+                <a href="proyectos.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors">
+                    Ver Proyectos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../assets/js/common.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCoin - Plataforma de Inversión Agrícola</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-[Manrope]">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+
+                <!-- Navigation Menu -->
+                <nav class="hidden md:flex gap-6 items-center">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-primary">Inicio</a>
+                    <a href="pages/proyectos.html" class="nav-link text-gray-600 hover:text-primary">Proyectos</a>
+                    <a href="pages/mercados.html" class="nav-link text-gray-600 hover:text-primary">Mercados</a>
+                    <a href="pages/inversor.html" class="nav-link text-gray-600 hover:text-primary">Inversores</a>
+                    <a href="pages/productor.html" class="nav-link text-gray-600 hover:text-primary">Productores</a>
+                    <a href="auth/auth.html" class="btn-primary">Iniciar Sesión</a>
+                </nav>
+
+                <!-- Authenticated Navigation (hidden by default) -->
+                <div id="authNav" class="hidden md:flex gap-4 items-center">
+                    <a href="dashboards/dashboard-inversor.html" class="nav-link text-gray-600 hover:text-primary">Dashboard</a>
+                    <a href="pages/portafolio.html" class="nav-link text-gray-600 hover:text-primary">Portafolio</a>
+                    <a href="pages/metodos_pago.html" class="nav-link text-gray-600 hover:text-primary">Pagos</a>
+                    <span id="userWelcome" class="text-gray-700 font-medium"></span>
+                    <button onclick="logout()" class="text-red-600 hover:text-red-800 font-medium">Cerrar Sesión</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col gap-2">
+                    <a href="index.html" class="block px-4 py-2 text-gray-600 hover:text-primary">Inicio</a>
+                    <a href="pages/proyectos.html" class="block px-4 py-2 text-gray-600 hover:text-primary">Proyectos</a>
+                    <a href="pages/mercados.html" class="block px-4 py-2 text-gray-600 hover:text-primary">Mercados</a>
+                    <a href="pages/inversor.html" class="block px-4 py-2 text-gray-600 hover:text-primary">Inversores</a>
+                    <a href="pages/productor.html" class="block px-4 py-2 text-gray-600 hover:text-primary">Productores</a>
+                    <a href="auth/auth.html" class="block px-4 py-2 bg-primary text-white rounded">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-hero py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold text-gray-900 mb-6 fade-in">
+                Invierte en el <span class="text-primary">Futuro Agrícola</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto fade-in">
+                Conectamos inversores con productores agrícolas para crear un ecosistema sostenible y rentable
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
+                <a href="pages/proyectos.html" class="btn-primary">Ver Proyectos</a>
+                <a href="pages/inversor.html" class="btn-secondary">Empezar a Invertir</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">¿Por qué elegir AgroCoin?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Retornos Atractivos</h3>
+                    <p class="text-gray-600">Obtén rendimientos competitivos invirtiendo en proyectos agrícolas verificados</p>
+                </div>
+
+                <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Seguridad Garantizada</h3>
+                    <p class="text-gray-600">Todos los proyectos son evaluados y verificados por nuestro equipo de expertos</p>
+                </div>
+
+                <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Impacto Sostenible</h3>
+                    <p class="text-gray-600">Contribuye al desarrollo de una agricultura más sostenible y responsable</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 gradient-primary text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold mb-2">500+</div>
+                    <div class="text-xl opacity-90">Proyectos Financiados</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">$2M+</div>
+                    <div class="text-xl opacity-90">Inversión Total</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">15%</div>
+                    <div class="text-xl opacity-90">Retorno Promedio</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">1000+</div>
+                    <div class="text-xl opacity-90">Inversores Activos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">¿Listo para empezar?</h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Únete a nuestra comunidad de inversores y productores comprometidos con el futuro agrícola
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="auth/auth.html" class="btn-primary">Crear Cuenta</a>
+                <a href="pages/proyectos.html" class="btn-secondary">Explorar Proyectos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">AgroCoin</h3>
+                    <p class="text-gray-400">Conectando el futuro de la agricultura con inversiones inteligentes</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Plataforma</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="pages/proyectos.html" class="hover:text-white">Proyectos</a></li>
+                        <li><a href="pages/mercados.html" class="hover:text-white">Mercados</a></li>
+                        <li><a href="pages/inversor.html" class="hover:text-white">Para Inversores</a></li>
+                        <li><a href="pages/productor.html" class="hover:text-white">Para Productores</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Soporte</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Centro de Ayuda</a></li>
+                        <li><a href="#" class="hover:text-white">Contacto</a></li>
+                        <li><a href="#" class="hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Términos de Uso</a></li>
+                        <li><a href="#" class="hover:text-white">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 AgroCoin. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
+</body>
+</html>

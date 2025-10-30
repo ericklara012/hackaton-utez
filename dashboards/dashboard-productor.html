@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCoin - Dashboard Productor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="font-[Manrope] bg-gray-50">
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">AgroCoin</a>
+
+                <nav class="hidden md:flex gap-6 items-center">
+                    <a href="dashboard-productor.html" class="text-primary font-medium">Dashboard</a>
+                    <a href="../pages/proyectos.html" class="text-gray-600 hover:text-primary">Mis Proyectos</a>
+                    <a href="../pages/mercados.html" class="text-gray-600 hover:text-primary">Mercados</a>
+                    <a href="../pages/metodos_pago.html" class="text-gray-600 hover:text-primary">Pagos</a>
+                    <span id="userWelcome" class="text-gray-700 font-medium"></span>
+                    <button onclick="logout()" class="text-red-600 hover:text-red-800 font-medium">Cerrar Sesión</button>
+                </nav>
+
+                <button id="mobileMenuBtn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Dashboard de Productor</h1>
+            <p class="text-gray-600">Gestiona tus proyectos agrícolas y conecta con inversores</p>
+        </div>
+
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Proyectos Activos</p>
+                        <p class="text-2xl font-bold text-gray-900">12</p>
+                    </div>
+                    <div class="p-3 bg-green-100 rounded-full">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="text-blue-500 text-sm font-medium">3 nuevos</span>
+                    <span class="text-gray-500 text-sm">este mes</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Capital Recaudado</p>
+                        <p class="text-2xl font-bold text-gray-900">$85,750</p>
+                    </div>
+                    <div class="p-3 bg-blue-100 rounded-full">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="text-green-500 text-sm font-medium">+25.3%</span>
+                    <span class="text-gray-500 text-sm">vs mes anterior</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Inversores</p>
+                        <p class="text-2xl font-bold text-gray-900">47</p>
+                    </div>
+                    <div class="p-3 bg-yellow-100 rounded-full">
+                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="text-blue-500 text-sm font-medium">8 nuevos</span>
+                    <span class="text-gray-500 text-sm">este mes</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Tasa de Éxito</p>
+                        <p class="text-2xl font-bold text-gray-900">92%</p>
+                    </div>
+                    <div class="p-3 bg-purple-100 rounded-full">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="text-green-500 text-sm font-medium">+5%</span>
+                    <span class="text-gray-500 text-sm">vs promedio</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Progreso de Financiamiento</h3>
+                <div class="chart-container">
+                    <canvas id="fundingChart"></canvas>
+                </div>
+            </div>
+
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Proyectos por Categoría</h3>
+                <div class="chart-container">
+                    <canvas id="categoriesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-semibold text-gray-900">Proyectos Recientes</h3>
+                <button class="btn-primary text-sm">Crear Nuevo Proyecto</button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Proyecto</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Meta</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Recaudado</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Progreso</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Estado</th>
+                            <th class="text-left py-3 px-4 font-medium text-gray-500">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4">
+                                <div class="font-medium text-gray-900">Cultivos Orgánicos Premium</div>
+                                <div class="text-sm text-gray-500">Agricultura orgánica certificada</div>
+                            </td>
+                            <td class="py-3 px-4 font-medium text-gray-900">$25,000</td>
+                            <td class="py-3 px-4 font-medium text-green-600">$22,500</td>
+                            <td class="py-3 px-4">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                    Financiado
+                                </span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <button class="text-primary hover:text-primary-hover text-sm font-medium">Ver detalles</button>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4">
+                                <div class="font-medium text-gray-900">Invernadero Inteligente</div>
+                                <div class="text-sm text-gray-500">Tecnología IoT para cultivos</div>
+                            </td>
+                            <td class="py-3 px-4 font-medium text-gray-900">$40,000</td>
+                            <td class="py-3 px-4 font-medium text-blue-600">$28,000</td>
+                            <td class="py-3 px-4">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 70%"></div>
+                                </div>
+                                <span class="text-sm text-gray-500">70%</span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                    Activo
+                                </span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <button class="text-primary hover:text-primary-hover text-sm font-medium">Ver detalles</button>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4">
+                                <div class="font-medium text-gray-900">Ganadería Regenerativa</div>
+                                <div class="text-sm text-gray-500">Pastoreo rotacional sostenible</div>
+                            </td>
+                            <td class="py-3 px-4 font-medium text-gray-900">$60,000</td>
+                            <td class="py-3 px-4 font-medium text-yellow-600">$15,000</td>
+                            <td class="py-3 px-4">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-yellow-600 h-2 rounded-full" style="width: 25%"></div>
+                                </div>
+                                <span class="text-sm text-gray-500">25%</span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                    En financiamiento
+                                </span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <button class="text-primary hover:text-primary-hover text-sm font-medium">Ver detalles</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <button class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow text-left">
+                <div class="flex items-center">
+                    <div class="p-3 bg-green-100 rounded-full mr-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">Nuevo Proyecto</h4>
+                        <p class="text-sm text-gray-500">Crear propuesta de financiamiento</p>
+                    </div>
+                </div>
+            </button>
+
+            <a href="../pages/mercados.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex items-center">
+                    <div class="p-3 bg-blue-100 rounded-full mr-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">Analizar Mercado</h4>
+                        <p class="text-sm text-gray-500">Tendencias y oportunidades</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="../pages/metodos_pago.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex items-center">
+                    <div class="p-3 bg-purple-100 rounded-full mr-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">Gestionar Pagos</h4>
+                        <p class="text-sm text-gray-500">Recibir y gestionar fondos</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script src="../assets/js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!AgroCoin.requireAuth()) {
+                return;
+            }
+
+            const user = AgroCoin.getCurrentUser();
+            if (user && user.type !== 'productor') {
+                AgroCoin.showAlert('Acceso denegado. Esta página es solo para productores.', 'error');
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 2000);
+                return;
+            }
+
+            initializeDashboard();
+        });
+
+        function initializeDashboard() {
+            setupCharts();
+            updateWelcomeMessage();
+        }
+
+        function updateWelcomeMessage() {
+            const user = AgroCoin.getCurrentUser();
+            const welcomeElement = document.getElementById('userWelcome');
+            if (user && welcomeElement) {
+                welcomeElement.textContent = `Hola, ${user.name || user.email.split('@')[0]}`;
+            }
+        }
+
+        function setupCharts() {
+            const fundingCtx = document.getElementById('fundingChart').getContext('2d');
+            new Chart(fundingCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Fondos Recaudados',
+                        data: [12000, 15000, 18000, 22000, 25000, 28000],
+                        backgroundColor: '#16a34a',
+                        borderColor: '#15803d',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            const categoriesCtx = document.getElementById('categoriesChart').getContext('2d');
+            new Chart(categoriesCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Agricultura Orgánica', 'Tecnología', 'Ganadería', 'Energía Renovable'],
+                    datasets: [{
+                        data: [45, 25, 20, 10],
+                        backgroundColor: [
+                            '#16a34a',
+                            '#3b82f6',
+                            '#f59e0b',
+                            '#8b5cf6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
